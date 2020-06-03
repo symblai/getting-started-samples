@@ -49,9 +49,6 @@ const micInstance = mic({
                     if (data) {
                         const {punctuated} = data;
                         console.log('Live: ', punctuated && punctuated.transcript);
-                        process.stdout.clearLine();
-                        process.stdout.cursorTo(0);
-                        process.stdout.write('Live: ' + punctuated && punctuated.transcript);
                     }
                 },
                 'onMessageResponse': (data) => {

@@ -2,8 +2,10 @@
 Few code samples to get you started quickly with Symbl APIs.
 
 ## List of Sample Codes
-1. [PSTN Dial-in using Voice SDK](./examples/voice-sdk/telephony-speaker-events.js): Dial-in using phone number and optional DTMF code with Speaker Events pushed in real-time.
-2. [Realtime WebSocket using Voice SDK](./examples/voice-sdk/realtime-websocket-single-stream.js): Connect directly using WebSocket API and push audio and get results in real-time. Including Live Transcript and Insights.
+* [PSTN Dial-in using Voice SDK](./examples/voice-sdk/telephony-speaker-events.js)
+    * Establishes a connection using a phone number through PSTN, to send speaker events, generate insights, and display a summary URL with the output. You can see how to initialize the Voice SDK, connect to the endpoint, push speaker events and get the summary URL.
+* [Realtime WebSocket using Voice SDK](./examples/voice-sdk/realtime-websocket-single-stream.js)
+    * Connect directly using WebSocket API and push audio and get results in real-time. Including Live Transcript and Insights.
 
 ## Install
 Clone this repo on your machine and perform npm install.

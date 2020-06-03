@@ -13,9 +13,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/symblai/getting-started-voice-sdk/issues"
+    "url": "https://github.com/symblai/getting-started-samples/issues"
   },
-  "homepage": "https://github.com/symblai/getting-started-voice-sdk#readme",
+  "homepage": "https://github.com/symblai/getting-started-samples#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "mic": "^2.1.2",

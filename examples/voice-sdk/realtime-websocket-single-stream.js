@@ -39,8 +39,8 @@ const micInstance = mic({
                 sampleRateHertz
             },
             speaker: { // Optional, if not specified, will simply not send an email in the end.
-                userId: 'toshish@symbl.ai',
-                name: 'Toshish'
+                userId: 'john.doe@example.com', // Update with valid email
+                name: 'John'
             },
             handlers: {
                 'onSpeechDetected': (data) => {

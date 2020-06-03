@@ -1,10 +1,13 @@
+require('dotenv').config();
+
 const sdk = require("symbl-node").sdk;
 const SpeakerEvent = require("symbl-node").SpeakerEvent;
 
-sdk
-  .init({
-    appId: "<your_app_id>",
-    appSecret: "<your_app_secret>",
+const phoneNumber = undefined; // replace this with the phone number, or configure DEFAULT_PHONE_NUMBER in .env file.
+
+sdk.init({
+    appId: process.env.APP_ID,
+    appSecret: process.env.APP_SECRET,
     basePath: "https://api.symbl.ai"
   })
   .then(() => {
@@ -14,15 +17,15 @@ sdk
       .startEndpoint({
         endpoint: {
           type: "pstn",
-          phoneNumber: "<your_phone_number>",
-          dtmf: "<code>" // you can find this on the meeting plaform invite. Leave blank if not connecting to a meeting platform
+          phoneNumber: phoneNumber || process.env.DEFAULT_PHONE_NUMBER,
+          dtmf: "<code>" // you can find this on the meeting platform invite. Leave blank if not connecting to a meeting platform
         },
         actions: [
           {
             invokeOn: "stop",
             name: "sendSummaryEmail",
             parameters: {
-              emails: ["your_email@example.com"]
+              emails: ["your_email@example.com"] // Add valid email addresses to received email
             }
           }
         ]

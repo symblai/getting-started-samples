@@ -8,7 +8,8 @@ Few code samples to get you started quickly with Symbl APIs.
     * Connect directly using WebSocket API and push audio and get results in real-time. Including Live Transcript and Insights.
 * [Realtime Output with PSTN Dialin using Voice SDK](./examples/voice-sdk/telephony-real-time-insights-transcription.js)
     * Get the live transcription and insights events in a Telephone call.
-
+* [Intent Detection with PSTN Dial-In using Voice SDK](./examples/voice-sdk/telephony-realtime-intent-detection.js)
+    * Get the intents, real-time in a Telephone call.
 
 ## Install
 Clone this repo on your machine and perform npm install.

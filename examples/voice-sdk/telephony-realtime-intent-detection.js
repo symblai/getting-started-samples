@@ -5,6 +5,7 @@ require('dotenv').config();
 const {sdk} = require('symbl-node');
 
 const phoneNumber = undefined; // replace this with the phone number, or configure DEFAULT_PHONE_NUMBER in .env file.
+const customDomain = undefined; // replace this with the custom domain provided to you, or configure CUSTOM_DOMAIN in .env file
 
 const stop = (sdk, connection) => {
     console.log('Stopping connection ' + connection.connectionId);
@@ -20,20 +21,21 @@ let _connection = undefined;
 sdk.init({
     appId: process.env.APP_ID,
     appSecret: process.env.APP_SECRET,
-    basePath: 'https://cpl-media.symbl.ai' // Intent detection is not available as part of regular API offering. You'll need a custom URL from Symbl to be able to use this.
+    basePath: customDomain || process.env.CUSTOM_DOMAIN // Intent detection is not available as part of regular API offering. You'll need a custom URL from Symbl to be able to use this.
 }).then(() => {
     sdk.startEndpoint({
         endpoint: {
             type: "pstn",
             phoneNumber: phoneNumber|| process.env.DEFAULT_PHONE_NUMBER,
             // dtmf: "<code>" // you can find this on the meeting platform invite. Leave blank if not connecting to a meeting platform
-            // audioConfig: {
+            // audioConfig: { // If not provided it uses PCMU with 8000 sample rate
             //     encoding: 'OPUS',
             //     sampleRate: 48000
             // },
             // type: 'sip',
             // uri: 'sip:124@domain.com' // Your SIP URI to dial-in to. This should be unique for an active call/meeting in your system.
         },
+        // Remove any intents you don't want to detect
         intents: [{
             intent: 'answering_machine'
         },{
@@ -43,22 +45,23 @@ sdk.init({
         },{
             intent: 'do_not_call'
         }],
-        actions: [{
+        // Uncomment this part if you want to received email at the end of the call with summary.
+        /* actions: [{
             "invokeOn": "stop",
             "name": "sendSummaryEmail",
             "parameters": {
                 "emails": [
-                    "toshish@symbl.ai"
+                    "john@example.com"
                 ]
             }
-        }],
+        }], */
         data: {
             session: {
                 name: 'My Awesome Call',
                 users: [{
                     user: {
-                        name: 'Toshish',
-                        userId: 'toshish@symbl.ai',
+                        name: 'John',
+                        userId: 'john@example.com',
                         role: 'organizer'
                     }
                 }]

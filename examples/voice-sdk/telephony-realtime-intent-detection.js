@@ -1,21 +1,22 @@
 /*
  * This Sample Code doesn't work with https://api.symbl.ai. If you have a requirement that needs this functionality, please contact us at support@symbl.ai
  */
+require('dotenv').config();
 
-const {sdk} = require('../build/app.bundle');
+const {sdk} = require('symbl-node');
 
-const phoneNumber = undefined; // replace this with the phone number, or configure DEFAULT_PHONE_NUMBER in .env file.
+const phoneNumber = process.env.DEFAULT_PHONE_NUMBER; // replace this with the phone number, or configure DEFAULT_PHONE_NUMBER in .env file.
 
 sdk.init({
-    appId: '__appId__',
-    appSecret: '____appSecret____',
-    basePath: 'https://somedomain.symbl.ai'
+    appId: process.env.APP_ID,
+    appSecret: process.env.APP_SECRET,
+    basePath: process.env.BASE_PATH
 }).then(() => {
     sdk.startEndpoint({
         endpoint: {
             type: "pstn",
             phoneNumber: phoneNumber,
-            dtmf: "<code>" // you can find this on the meeting platform invite. Leave blank if not connecting to a meeting platform
+            // dtmf: "<code>" // you can find this on the meeting platform invite. Leave blank if not connecting to a meeting platform
             // audioConfig: {
             //     encoding: 'OPUS',
             //     sampleRate: 48000
@@ -71,7 +72,7 @@ sdk.init({
                     console.log(`Alternatives: ${alternatives}`); // These represent other complementing intents if any were detected
                     break;
             }
-        } else if (data.type === 'transcription_response') {
+        } else if (data.type === 'transcript_response') {
             const { payload: { content }, isFinal } = data;
             // isFinal: false represents an on going iteration for the speech being transcribed.
             // isFinal: true represents final iteration the transcribed sentence processed util now.

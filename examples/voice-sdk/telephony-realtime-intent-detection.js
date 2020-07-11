@@ -2,6 +2,7 @@
  * Note: This Sample Code doesn't work with https://api.symbl.ai. If you have a requirement that needs this functionality, please contact us at support@symbl.ai
  */
 require('dotenv').config();
+
 const {sdk} = require('symbl-node');
 
 const phoneNumber = undefined; // replace this with the phone number, or configure DEFAULT_PHONE_NUMBER in .env file.

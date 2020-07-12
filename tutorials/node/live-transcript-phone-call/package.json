@@ -1,0 +1,13 @@
+{
+  "name": "live-transcript-phone-call",
+  "version": "1.0.0",
+  "description": "Get the live transcription in your Node.js application by making a simple call to a valid phone number.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "symbl-node": "latest"
+  }
+}

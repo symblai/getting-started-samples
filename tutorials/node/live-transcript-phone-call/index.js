@@ -47,7 +47,6 @@ sdk.init({
         setTimeout(async () => {
             await sdk.stopEndpoint({connectionId});
             console.log('Stopped the connection');
-            console.log('Summary Info:', connection.summaryInfo);
             console.log('Conversation ID:', connection.conversationId);
         }, 60000); // Change the 60000 with higher value if you want this to continue for more time.
     } catch (e) {

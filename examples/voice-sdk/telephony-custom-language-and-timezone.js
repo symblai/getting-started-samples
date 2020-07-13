@@ -1,5 +1,5 @@
 /*
- *  This example shows how to use languages other than English and also how to pass in `timeZone` in which the conversation is taking place.
+ *  This example shows how to use languages other than English and also how to pass in `timezone` in which the conversation is taking place.
  *  For languages: Currently the following languages are supported
  *
  *  ['en-US', 'en-AU', 'en-GB', 'fr-CA', 'fr-FR', 'de-DE', 'it-IT', 'nl-NL', 'es-US', 'ja-JP']
@@ -7,12 +7,13 @@
  *  The above are all BCP-47 standard language codes and currently ONLY 1 should be passed in the `languages` array as shown below.
  *  Support for detecting multiple languages in the same conversation will be added soon!
  *
- *  For timeZone: Please refer to https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for a list of timeZones.
+ *  For timezone: Please refer to https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for a list of timeZones.
+ *
  *  You can also use `moment-timezone` package to obtain a list of timeZones like the following
  *  const timeZones = moment.tz.names()
  *
  *  NOTE: If `languages` is NOT passed in the `startEndpoint` call the API will fallback to 'en-US'.
- *        If `timeZone` is NOT passed the API will fall back to 'UTC'.
+ *        If `timezone` is NOT passed the API will fall back to 'UTC'.
  */
 
 const {sdk, SpeakerEvent} = require("symbl-node");
@@ -74,7 +75,7 @@ sdk.init({
             uri: 'sip:124@domain.com'
         },
         languages: ['ja-JP'], // Can be any 1 of ['en-US', 'en-AU', 'en-GB', 'fr-CA', 'fr-FR', 'de-DE', 'it-IT', 'nl-NL', 'es-US', 'ja-JP']
-        timeZone: 'Asia/Tokyo', // List of timeZones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+        timezone: 'Asia/Tokyo', // List of timeZones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
         actions: [{
             "invokeOn": "stop",
             "name": "sendSummaryEmail",

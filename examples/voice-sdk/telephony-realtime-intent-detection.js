@@ -1,6 +1,3 @@
-/*
- * This Sample Code doesn't work with https://api.symbl.ai. If you have a requirement that needs this functionality, please contact us at support@symbl.ai
- */
 require('dotenv').config();
 
 const {sdk} = require('symbl-node');

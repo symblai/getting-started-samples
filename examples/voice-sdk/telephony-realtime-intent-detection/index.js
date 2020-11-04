@@ -51,42 +51,44 @@ sdk.init({
                 }]
             }
         }
-    }, (data) => {
-        console.log("Received Data from Session-Subscription WebSocket: ", data);
-        if (data.type === 'intent_response') {
-            const { intent: intentData } = data;
-
-            switch (intentData.intent) {
-                case "answering_machine":
-                    let { subIntent } = intentData;
-                    console.log(`SubIntent identified: ${subIntent} for 'answering_machine'`); // subIntents supported under 'answering_machine' are [answered_by_human, answered_by_machine]
-                case "interested":
-                case "not_interested":
-                case "do_not_call":
-                    let { score, text, alternatives } = intentData;
-                    console.log(`Score: ${score}`); // Score of the detected intent
-                    console.log(`Text: ${text}`); // Text at which the intent was detected
-                    console.log(`Alternatives: ${alternatives}`); // These represent other complementing intents if any were detected
-                    break;
-            }
-        } else if (data.type === 'transcript_response') {
-            const { payload: { content }, isFinal } = data;
-            // isFinal: false represents an on going iteration for the speech being transcribed.
-            // isFinal: true represents final iteration the transcribed sentence processed util now.
-            console.log(`Transcription: ${content}, isFinal: ${isFinal}`);
-        } else if (data.type === 'insight_response') {
-            const { insights } = data;
-            insights.forEach(insight => {
-                const { type, text, confidence, from } = insight;
-                console.log(`Insight Type: ${type}`); // Insight Type can be one of [action_item, question]
-                console.log(`Text: ${text}`); // Textual the part of transcript detected as an insight
-                console.log(`Insight Score: ${confidence}`); // The confidence score for this insight
-                console.log(`From:`, from); // The detected user who spoke this insight if any
-            });
-        }
     }).then(connection => {
         const connectionId = connection.connectionId;
         console.log('Successfully connected:', connectionId);
+
+        // The function `subscribeToConnection` provides the live events as it receives them to the callback function passed
+        sdk.subscribeToConnection(connectionId, (data) => {
+            if (data.type === 'intent_response') {
+                const { intent: intentData } = data;
+
+                switch (intentData.intent) {
+                    case "answering_machine":
+                        let { subIntent } = intentData;
+                        console.log(`SubIntent identified: ${subIntent} for 'answering_machine'`); // subIntents supported under 'answering_machine' are [answered_by_human, answered_by_machine]
+                    case "interested":
+                    case "not_interested":
+                    case "do_not_call":
+                        let { score, text, alternatives } = intentData;
+                        console.log(`Score: ${score}`); // Score of the detected intent
+                        console.log(`Text: ${text}`); // Text at which the intent was detected
+                        console.log(`Alternatives: ${alternatives}`); // These represent other complementing intents if any were detected
+                        break;
+                }
+            } else if (data.type === 'transcript_response') {
+                const { payload: { content }, isFinal } = data;
+                // isFinal: false represents an on going iteration for the speech being transcribed.
+                // isFinal: true represents final iteration the transcribed sentence processed util now.
+                console.log(`Transcription: ${content}, isFinal: ${isFinal}`);
+            } else if (data.type === 'insight_response') {
+                const { insights } = data;
+                insights.forEach(insight => {
+                    const { type, text, confidence, from } = insight;
+                    console.log(`Insight Type: ${type}`); // Insight Type can be one of [action_item, question]
+                    console.log(`Text: ${text}`); // Textual the part of transcript detected as an insight
+                    console.log(`Insight Score: ${confidence}`); // The confidence score for this insight
+                    console.log(`From:`, from); // The detected user who spoke this insight if any
+                });
+            }
+        });
 
         setTimeout(() => {
 

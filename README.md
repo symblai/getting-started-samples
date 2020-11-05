@@ -29,7 +29,7 @@ Clone this repo on your machine and perform npm install.
 ```bash
 git clone https://github.com/symblai/getting-started-samples.git
 cd getting-started-samples
-npm install
+npm install  # Alternatively, you can also use yarn
 ```
 
 Code samples in this repo use [dotenv](https://github.com/motdotla/dotenv) for
@@ -41,7 +41,8 @@ cp .env.default .env
 
 Update `APP_ID` and `APP_SECRET` with valid values. You can get them by logging
 into [Symbl Platform](https://platform.symbl.ai). Update any additional
-configuration if required.
+configuration such as `DEFAULT_PHONE_NUMBER` may be required for a particular
+sample to work properly.
 
 ## Run
 
@@ -53,8 +54,33 @@ Once you've configured the above, simply run any sample code you would like to
 try for example:
 
 ```bash
-node ./examples/voice-sdk/telephony-speaker-events.js
+node ./tutorials/node/live-transcript-phone-call/index.js
 ```
+
+```bash
+node ./examples/voice-sdk/realtime-websocket-single-stream/index.js
+```
+
+```bash
+node ./examples/voice-sdk/telephony-custom-audio-config/index.js
+```
+
+```bash
+node ./examples/voice-sdk/telephony-custom-language-and-timezone/index.js
+```
+
+```bash
+node ./examples/voice-sdk/telephony-real-time-insights-transcription/index.js
+```
+
+```bash
+node ./examples/voice-sdk/telephony-realtime-intent-detection/index.js
+```
+
+```bash
+node ./examples/voice-sdk/telephony-speaker-events/index.js
+```
+
 
 ## Testing for PSTN
 

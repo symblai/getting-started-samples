@@ -19,15 +19,15 @@ sdk
           // type: 'sip',         // Use this if you're trying to dial in to a SIP trunk.
           // uri: 'sip:username@domain.com',
           type: 'pstn',
-          phoneNumber: phoneNumber || process.env.DEFAULT_PHONE_NUMBER,
-          dtmf: '<code>', // you can find this on the meeting platform invite. Leave blank if not connecting to a meeting platform
+          phoneNumber: phoneNumber || process.env.DEFAULT_PHONE_NUMBER //,
+          //dtmf: '', // you can find this on the meeting platform invite. Omit or leave blank if not connecting to a meeting platform
         },
         actions: [
           {
             invokeOn: 'stop',
             name: 'sendSummaryEmail',
             parameters: {
-              emails: ['your_email@example.com'], // Add valid email addresses to received email
+              emails: [process.env.SUMMARY_EMAIL], // Add valid email addresses to received email
             },
           },
         ],

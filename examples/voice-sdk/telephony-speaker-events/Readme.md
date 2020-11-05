@@ -25,7 +25,8 @@ await sdk.init({
 
 `const connection = await sdk.startEndpoint(endpointConfig)`
 
-First of all let's provide phone number and endpoint type:
+First of all let's provide phone number and endpoint type to connect to
+a landline or cell number:
 
 ```javascript
       endpoint: {
@@ -34,11 +35,20 @@ First of all let's provide phone number and endpoint type:
       },
 ```
 
+You can also provide `dtmf` code if you have one. You can often find this code
+on the meeting platform invite. For example, if your meeting id is 8349:
+
+```javascript
+      endpoint: {
+        type: 'pstn',
+        phoneNumber: process.env.DEFAULT_PHONE_NUMBER,
+        dtmf: ',,8349#'  # <pause> <pause> 8349 <# symbol>
+      },
+```
+
 In case you want to use `sip` connection, you can use `type: sip` and provide
 SIP URI to dial-in to. This should be unique for an active call/meeting in your
-system. You can also provide `dtmf` code if you have one. You can find this code
-on meeting platform invite. You can leave it blank if not connecting to meeting
-platform
+system. 
 
 ```javascript
    dtmf: "<code>",

@@ -62,6 +62,17 @@ audioConfig: {
 ```
 ### Intents
 Symbl provides various intents which can be detected in realtime. 
+* An `intent` can also have a `subIntent` which indicates additional metadata about the intent. 
+For e.g. the `answering_machine` intent will have subIntents which can either be `answered_by_human` or `answered_by_machine`
+
+* The `text` field in the `intent` returns the textual content at which the intent was finalised.
+
+* The `score` field in the `intent` returns a confidence score for the detected intent.
+
+* The `alternatives` is an array in the `intent` object which contains other possible intents detected if any, with their confidence `score` 
+
+Refer to the below [section](#Getting the detected Intents in RealTime) for extracting the above structure from the response.
+
 In order to detect intents for a conversation, you can specify the below configuration:
 
 ```js
@@ -121,7 +132,7 @@ response:
 const connectionId = connection.connectionId
 ```
 
-## Getting the detected Intents in RealTime
+### Getting the detected Intents in RealTime
 
 In order to get real time intents, we need to subscribe to the connection. We can
 do so by using

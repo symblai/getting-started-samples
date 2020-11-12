@@ -1,123 +1,110 @@
-const {sdk} = require('symbl-node');
-const uuid = require('uuid').v4;
-
+/**
+ * To Test this script - start speaking when you run the script.
+ */
+const WebSocketClient = require('websocket').client;
+const auth = require('../auth');
 const mic = require('mic');
-
+const uuid = require('uuid').v4;
 const micInstance = mic({
     rate: '16000',
     channels: '1',
     debug: false,
     exitOnSilence: 6,
 });
-
 const micInputStream = micInstance.getAudioStream();
+let connection = undefined;
+const ws = new WebSocketClient();
+ws.on('connectFailed', e => {
+    console.error('Connection Failed.', e);
+});
+ws.on('connect', conn => {
+    connection = conn;
+    connection.on('close', () => {
+        console.log('WebSocket closed.');
+    });
+    connection.on('error', err => {
+        console.log('WebSocket error.', err);
+    });
+    connection.on('message', _data => {
+        const data = JSON.parse(_data.utf8Data)
+        if (data.type === 'message') {
+            // console.log(data2)
+            const message = data.message;
+            if (message.type === 'recognition_result') {
+                console.log(message.punctuated.transcript, '\n');
+            }
 
-const users = {
-    John: {
-        userId: '__your_valid_email__',
-        name: 'John',
-    },
-};
-
-const realtimeSessionId = uuid();
-console.log(realtimeSessionId);
-
-sdk.init({
-    appId: '',
-    appSecret: '',
-    basePath: 'https://api.symbl.ai'
-})
-    .then(() => {
-        console.log('SDK Initialized.');
-
-        const sendAudioArray = [];
-
-        Object.values(users).forEach(user => {
-            sdk.startRealtimeRequest({
-                id: realtimeSessionId,
-                insightTypes: ['action_item'],
-                trackers: [
-                    {
-                        name: 'Denial',
-                        vocabulary: [
-                            'No',
-                            'never agreed to',
-                            'not interested',
-                        ],
-                    },
-                ],
-                config: {
-                    confidenceThreshold: 0.5,
-                    timezoneOffset: 480,
-                    languageCode: 'en-US',
+        } else if (data.type === 'tracker_response') {
+            console.log(JSON.stringify(data, null, 2))
+        }
+    });
+    console.log('Connection established.');
+    connection.send(
+        JSON.stringify({
+            type: 'start_request',
+            insightTypes: ['action_item'],
+            trackers: [
+                {
+                    name: 'COVID-19',
+                    vocabulary: [
+                        'social distancing',
+                        'wear mask',
+                        'covid',
+                        'corona',
+                        'coronavirus',
+                        'pandemic',
+                        'quarantine'
+                    ]
+                },
+                {
+                    name: 'Approval',
+                    vocabulary: ['sounds great', 'yes', 'okay, sounds good'],
+                },
+                {
+                    name: 'Denial',
+                    vocabulary: ['No', 'Not necessary', 'Not a good idea'],
+                },
+            ],
+            config: {
+                confidenceThreshold: 0.5,
+                timezoneOffset: 420,
+                languageCode: 'en-US',
+                speechRecognition: {
+                    engine: 'google',
+                    encoding: 'LINEAR16',
                     sampleRateHertz: 16000,
-
-                    //mode: 'speaker'
                 },
-                speaker: user,
-                handlers: {
-                    onSpeechDetected: data => {
-                        console.log(
-                            user.name,
-                            'onSpeechDetected',
-                            JSON.stringify(data)
-                        );
-                    },
-                    onMessageResponse: data => {
-                        console.log(
-                            user.name,
-                            'onMessageResponse',
-                            JSON.stringify(data)
-                        );
-                    },
-                    onInsightResponse: data => {
-                        console.log(
-                            user.name,
-                            'onInsightResponse',
-                            JSON.stringify(data)
-                        );
-                    },
-                    onTrackerResponse: data => {
-                        console.log(
-                            user.name,
-                            'onTrackerResponse',
-                            JSON.stringify(data)
-                        );
-                    },
-                },
+            },
+            speaker: {
+                userId: 'james@symbl.ai',
+                name: 'James',
+            },
+        })
+    );
+    micInputStream.on('data', function(data) {
+        connection.send(data);
+    });
+    setTimeout(() => {
+        micInstance.stop();
+        connection.sendUTF(
+            JSON.stringify({
+                type: 'stop_recognition',
             })
-                .then(connection => {
-                    console.log(
-                        'Connection Started for speaker: ',
-                        user,
-                        connection.conversationId
-                    );
-                    sendAudioArray.push(connection.sendAudio);
-                    setTimeout(() => {
-                        micInstance.stop();
-                        connection
-                            .stop()
-                            .then(conversationData => {
-                                console.log(
-                                    'Connection stopped for speaker:',
-                                    user
-                                );
-                                console.log(
-                                    'Conversation Data',
-                                    conversationData
-                                );
-                                //process.exit();
-                            })
-                            .catch(console.error);
-                    }, 60 * 1000);
-                })
-                .catch(console.error);
-        });
-
-        micInputStream.on('data', data => {
-            sendAudioArray.forEach(sendAudio => sendAudio(data));
-        });
-
-        micInstance.start();
-    })
-    .catch(err => console.error('Error in initialization.', err));
+        );
+    }, 1 * 60 * 1000);
+    micInstance.start();
+});
+auth({
+    appId: '__yourAppId__',
+    appSecret: '__yourAppSecret__'
+}).then(response => {
+    const {accessToken} = response;
+    ws.connect(
+        'wss://api.symbl.ai/v1/realtime/insights/' + uuid(),
+        null,
+        null,
+        {
+            'x-api-key': accessToken
+        }
+    );
+})

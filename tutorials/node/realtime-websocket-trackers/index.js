@@ -64,12 +64,8 @@ ws.on('connect', conn => {
                 {
                     name: 'Denial',
                     vocabulary: ['No', 'Not necessary', 'Not a good idea', "don't agree"],
-                },
-                {
-                    name: 'Not Sure',
-                    vocabulary: ["I am not sure", "don't know", "don't think so", "I have need to check", "I will have to check",
-                        "I don't think", "not very sure"]
                 }
+
             ],
             config: {
                 confidenceThreshold: 0.5,
@@ -100,8 +96,8 @@ ws.on('connect', conn => {
     micInstance.start();
 });
 auth({
-    appId: '__yourAppId__',
-    appSecret: '__yourAppSecret__'
+    appId: '747174314759635a356e4d4c4654314f7665685237585a76327a456a37535649',
+    appSecret: '39444a6c374b7349736d56416b7866746135416b3162434f4e427174503368702d65426257736f33356168683150776643724a30475a7a7a79453278454e5971'
 }).then(response => {
     const {accessToken} = response;
     ws.connect(

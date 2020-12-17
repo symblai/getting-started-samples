@@ -49,8 +49,10 @@ ws.on('connect', conn => {
                     vocabulary: [
                         'a budget conversation',
                         'budget', 'budgeted', 'budgeting decision', 'budgeting decisions',
+                        'money',
                         'budgets', 'funding', 'funds', 'I have the budget', 'my budget', 'our budget', 'your budget',
-                        "we don't have budget for this"
+                        "we don't have budget for this", "don't think I have budget", "I think we have budget",
+                        "not sure if I have budget"
                     ]
                 },
                 {
@@ -67,7 +69,6 @@ ws.on('connect', conn => {
                 timezoneOffset: 420,
                 languageCode: 'en-US',
                 speechRecognition: {
-                    engine: 'google',
                     encoding: 'LINEAR16',
                     sampleRateHertz: 16000,
                 },

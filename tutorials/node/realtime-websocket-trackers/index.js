@@ -43,6 +43,8 @@ ws.on('connect', conn => {
         JSON.stringify({
             type: 'start_request',
             insightTypes: ['action_item'],
+            // These are the trackers that will be detected in real-time
+            // Exact match or similar content is detected
             trackers: [
                 {
                     name: 'Budget',
@@ -63,6 +65,11 @@ ws.on('connect', conn => {
                     name: 'Denial',
                     vocabulary: ['No', 'Not necessary', 'Not a good idea', "don't agree"],
                 },
+                {
+                    name: 'Not Sure',
+                    vocabulary: ["I am not sure", "don't know", "don't think so", "I have need to check", "I will have to check",
+                        "I don't think", "not very sure"]
+                }
             ],
             config: {
                 confidenceThreshold: 0.5,

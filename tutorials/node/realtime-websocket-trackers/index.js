@@ -45,24 +45,21 @@ ws.on('connect', conn => {
             insightTypes: ['action_item'],
             trackers: [
                 {
-                    name: 'COVID-19',
+                    name: 'Budget',
                     vocabulary: [
-                        'social distancing',
-                        'wear mask',
-                        'covid',
-                        'corona',
-                        'coronavirus',
-                        'pandemic',
-                        'quarantine'
+                        'a budget conversation',
+                        'budget', 'budgeted', 'budgeting decision', 'budgeting decisions',
+                        'budgets', 'funding', 'funds', 'I have the budget', 'my budget', 'our budget', 'your budget',
+                        "we don't have budget for this"
                     ]
                 },
                 {
                     name: 'Approval',
-                    vocabulary: ['sounds great', 'yes', 'okay, sounds good'],
+                    vocabulary: ['sounds great', 'yes', 'okay, sounds good', "agree", "yeah"],
                 },
                 {
                     name: 'Denial',
-                    vocabulary: ['No', 'Not necessary', 'Not a good idea'],
+                    vocabulary: ['No', 'Not necessary', 'Not a good idea', "don't agree"],
                 },
             ],
             config: {
@@ -81,7 +78,7 @@ ws.on('connect', conn => {
             },
         })
     );
-    micInputStream.on('data', function(data) {
+    micInputStream.on('data', function (data) {
         connection.send(data);
     });
     setTimeout(() => {

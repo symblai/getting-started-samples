@@ -96,8 +96,8 @@ ws.on('connect', conn => {
     micInstance.start();
 });
 auth({
-    appId: '747174314759635a356e4d4c4654314f7665685237585a76327a456a37535649',
-    appSecret: '39444a6c374b7349736d56416b7866746135416b3162434f4e427174503368702d65426257736f33356168683150776643724a30475a7a7a79453278454e5971'
+    appId: '__yourAppId__',
+    appSecret: '__yourAppSecret__'
 }).then(response => {
     const {accessToken} = response;
     ws.connect(

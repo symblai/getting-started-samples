@@ -5,6 +5,21 @@
 Make sure you have [your account credentials](https://platform.symbl.ai/#/home)
 and Node.js installed (> v8.x) on your machine.
 
+The sample code uses `sox` to access microphone. You will also need to make sure that `sox` is installed on your machine.
+
+#### Mac OS
+```bash
+brew install sox
+```
+
+#### Ubuntu/Linux
+```bash
+sudo apt-get install libasound2-plugins libasound2-python libsox-fmt-all
+
+sudo apt-get install sox
+```
+
+
 ### Install dependencies
 
 ```bash

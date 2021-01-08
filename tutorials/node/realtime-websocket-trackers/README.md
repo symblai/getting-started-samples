@@ -57,20 +57,27 @@ const connection = await sdk.startRealtimeRequest({
   id,
   insightTypes: ['action_item', 'question'],
   trackers: [
+      // Track anything you want
       {
-          name: 'Denial',
+          name: 'Budget',
+          // vocabulary is examples and key phrases you want to provide which will be used to track
+          
           vocabulary: [
-              'No thank you',
-              'Not interested',
-              'No thanks',
-              ...
+              'a budget conversation',
+              'budget', 'budgeted', 'budgeting decision', 'budgeting decisions',
+              'money',
+              'budgets', 'funding', 'funds', 'I have the budget', 'my budget', 'our budget', 'your budget',
+              "we don't have budget for this", "don't think I have budget", "I think we have budget",
+              "not sure if I have budget"
           ]
       },
       {
           name: 'Approval',
-          vocabulary: [
-              ...
-          ]
+          vocabulary: ['sounds great', 'yes', 'okay, sounds good', "agree", "yeah"],
+      },
+      {
+          name: 'Denial',
+          vocabulary: ['No', 'Not necessary', 'Not a good idea', "don't agree"],
       }
   ],
   ...

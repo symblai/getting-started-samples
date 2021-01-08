@@ -19,7 +19,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "mic": "^2.1.2",
-    "symbl-node": "^1.0.8-alpha.1",
-    "uuid": "^8.1.0"
+    "symbl-node": "^1.0.11",
+    "uuid": "^8.1.0",
+    "request": "^2.88.2"
   }
 }

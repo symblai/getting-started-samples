@@ -13,9 +13,9 @@ const micInstance = mic({
   channels: '1',
   debug: false,
   exitOnSilence: 6,
-})
+});
 
-;(async () => {
+(async () => {
   try {
     // Initialize the SDK
     await sdk.init({
@@ -40,31 +40,44 @@ const micInstance = mic({
       },
       speaker: {
         // Optional, if not specified, will simply not send an email in the end.
-        userId: 'validemail@gmail.com', // Update with valid email
+        userId: 'EMAIL_ADDRESS', // Update with valid email
         name: 'John Doe',
       },
       handlers: {
+        /**
+         * This will return live speech-to-text transcription of the call.
+         */
         onSpeechDetected: (data) => {
           console.log(JSON.stringify(data))
-          // For live transcription
           if (data) {
             const {punctuated} = data
             console.log('Live: ', punctuated && punctuated.transcript)
           }
         },
+        /**
+         * When processed messages are available, this callback will be called.
+         */
         onMessageResponse: (data) => {
-          // When a processed message is available
-          console.log('onMessageResponse', JSON.stringify(data))
+          console.log('onMessageResponse', JSON.stringify(data, null, 2))
         },
+        /**
+         * When Symbl detects an insight, this callback will be called.
+         */
         onInsightResponse: (data) => {
-          // When an insight is detected
-          console.log('onInsightResponse', JSON.stringify(data))
-        },
+          console.log('onInsightResponse', JSON.stringify(data, null, 2))
+        }
+        /**
+         * When Symbl detects a topic, this callback will be called.
+         */
+        onTopicResponse: (data) => {
+          console.log('onTopicResponse', JSON.stringify(data, null, 2))
+        }
       },
     })
     console.log('Successfully connected.')
 
     const micInputStream = micInstance.getAudioStream()
+    /** Raw audio stream */
     micInputStream.on('data', (data) => {
       // Push audio from Microphone to websocket connection
       connection.sendAudio(data)

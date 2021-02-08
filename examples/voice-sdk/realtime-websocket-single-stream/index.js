@@ -1,10 +1,11 @@
 require('dotenv').config()
-
 const {sdk} = require('symbl-node')
 const uuid = require('uuid').v4
-
 // For demo purposes, we're using mic to simply get audio from microphone and pass it on to websocket connection
 const mic = require('mic')
+
+const appId = "";
+const appSecret = "";
 
 const sampleRateHertz = 16000
 
@@ -19,8 +20,8 @@ const micInstance = mic({
   try {
     // Initialize the SDK
     await sdk.init({
-      appId: process.env.APP_ID,
-      appSecret: process.env.APP_SECRET,
+      appId,
+      appSecret,
       basePath: 'https://api.symbl.ai',
     })
 
@@ -36,12 +37,12 @@ const micInstance = mic({
         confidenceThreshold: 0.7,
         timezoneOffset: 480, // Offset in minutes from UTC
         languageCode: 'en-US',
-        sampleRateHertz,
+        sampleRateHertz
       },
       speaker: {
         // Optional, if not specified, will simply not send an email in the end.
-        userId: 'EMAIL_ADDRESS', // Update with valid email
-        name: 'John Doe',
+        userId: 'emailAddress', // Update with valid email
+        name: 'My name'
       },
       handlers: {
         /**
@@ -65,16 +66,16 @@ const micInstance = mic({
          */
         onInsightResponse: (data) => {
           console.log('onInsightResponse', JSON.stringify(data, null, 2))
-        }
+        },
         /**
          * When Symbl detects a topic, this callback will be called.
          */
         onTopicResponse: (data) => {
           console.log('onTopicResponse', JSON.stringify(data, null, 2))
         }
-      },
-    })
-    console.log('Successfully connected.')
+      }
+    });
+    console.log('Successfully connected. Connection ID: ', connection.connectionId);
 
     const micInputStream = micInstance.getAudioStream()
     /** Raw audio stream */

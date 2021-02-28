@@ -78,6 +78,45 @@ const connection = await sdk.startRealtimeRequest({
 
 ```
 
+4. If you want to receive interim results as trackers are detected, you can optionally set `interimResults` to `true` in the `config` object in request.json
+```javascript
+   const connection = await sdk.startRealtimeRequest({
+      id,
+      insightTypes: ['action_item', 'question'],
+      trackers: [
+         {
+            name: 'Denial',
+            vocabulary: [
+               'No thank you',
+               'Not interested',
+               'No thanks',
+               ...
+            ]
+         },
+         {
+            name: 'Approval',
+            vocabulary: [
+               ...
+            ]
+         }
+      ],
+      config: {
+         confidenceThreshold: 0.5,
+         timezoneOffset: 420,
+         languageCode: 'en-US',
+         trackers: {
+            // Returns interim tracker detection returns
+            interimResults: true // By default false
+         },
+         speechRecognition: {
+            encoding: 'LINEAR16',
+            sampleRateHertz: 16000
+         },
+      },
+   ...
+})
+```
+
 ## Run
 
 Run the code:

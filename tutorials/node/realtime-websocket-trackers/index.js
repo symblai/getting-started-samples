@@ -36,6 +36,8 @@ ws.on('connect', conn => {
 
         } else if (data.type === 'tracker_response') {
             console.log(JSON.stringify(data, null, 2))
+        } else if (data.type === 'topic_response') {
+            console.log(JSON.stringify(data, null, 2))
         }
     });
     console.log('Connection established.');
@@ -71,6 +73,11 @@ ws.on('connect', conn => {
                 confidenceThreshold: 0.5,
                 timezoneOffset: 420,
                 languageCode: 'en-US',
+                // sentiment: true,
+                trackers: {
+                    // Returns interim tracker detection returns
+                    interimResults: true // By default false
+                },
                 speechRecognition: {
                     encoding: 'LINEAR16',
                     sampleRateHertz: 16000,
@@ -96,9 +103,9 @@ ws.on('connect', conn => {
     micInstance.start();
 });
 auth({
-    appId: '<your_app_id>',
-    appSecret: '<your_secret>'
-}).then(response => {
+    appId: '__yourAppId__',
+    appSecret: '__yourAppSecret__'
+    }).then(response => {
     const {accessToken} = response;
     ws.connect(
         'wss://api.symbl.ai/v1/realtime/insights/' + uuid(),
@@ -109,3 +116,27 @@ auth({
         }
     );
 })
+
+
+console.log(JSON.stringify({
+    text: JSON.stringify({
+        type: 'start_request',
+        insightTypes: ['action_item'],
+        // These are the trackers that will be detected in real-time
+        // Exact match or similar content is detected
+
+        config: {
+            confidenceThreshold: 0.5,
+            timezoneOffset: 420,
+            languageCode: 'en-US',
+            speechRecognition: {
+                encoding: 'LINEAR16',
+                sampleRateHertz: 16000,
+            },
+        },
+        speaker: {
+            userId: 'james@symbl.ai',
+            name: 'James',
+        }
+    })
+}));

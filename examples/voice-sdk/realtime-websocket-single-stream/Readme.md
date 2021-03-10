@@ -33,7 +33,7 @@ The first step to getting setup is to [sign up][signup] and grab your `appId` an
 
 Install the Symbl Javascript SDK and other required Node modules:
 
-```npm install``
+```npm install```
 
 ## Integration 
 

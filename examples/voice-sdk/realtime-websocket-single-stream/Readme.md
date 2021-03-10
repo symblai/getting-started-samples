@@ -53,10 +53,10 @@ This guide is actively developed, and we love to hear from you! Please feel free
 This library is released under the [MIT License][license]
 
 [license]: LICENSE.txt
-[telephony]: https://docs.symbl.ai/docs/telephony/overview/post-api
 [websocket]: https://docs.symbl.ai/docs/streamingapi/overview/introduction
+[telephony]: https://docs.symbl.ai/docs/telephony/overview/post-api
 [developer_community]: https://community.symbl.ai/?_ga=2.134156042.526040298.1609788827-1505817196.1609788827
 [slack]: https://join.slack.com/t/symbldotai/shared_invite/zt-4sic2s11-D3x496pll8UHSJ89cm78CA
 [signup]: https://platform.symbl.ai/?_ga=2.63499307.526040298.1609788827-1505817196.1609788827
-[issues]: https://github.com/symblai/connect-symbl-to-zoom-without-ui/issues
-[pulls]: https://github.com/connect-symbl-to-zoom-without-ui/pulls
+[issues]: https://github.com/symblai/getting-started-samples/issues
+[pulls]: https://github.com/symblai/getting-started-samples/pulls

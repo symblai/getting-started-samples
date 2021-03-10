@@ -75,7 +75,7 @@ const micInstance = mic({
         }
       }
     });
-    console.log('Successfully connected. Connection ID: ', connection.connectionId);
+    console.log('Successfully connected. Conversation ID: ', connection.conversationId);
 
     const micInputStream = micInstance.getAudioStream()
     /** Raw audio stream */

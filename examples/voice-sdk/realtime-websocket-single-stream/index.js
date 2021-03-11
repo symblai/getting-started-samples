@@ -49,11 +49,12 @@ const micInstance = mic({
          * This will return live speech-to-text transcription of the call.
          */
         onSpeechDetected: (data) => {
-          console.log(JSON.stringify(data))
           if (data) {
             const {punctuated} = data
             console.log('Live: ', punctuated && punctuated.transcript)
+            console.log('');
           }
+          console.log('onSpeechDetected ', JSON.stringify(data, null, 2));
         },
         /**
          * When processed messages are available, this callback will be called.

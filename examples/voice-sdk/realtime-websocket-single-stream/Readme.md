@@ -5,6 +5,7 @@ Realtime WebSocket using Symbl Javascript SDK
 
 Realtime WebSocket using Symbl Javascript SDK
 
+The Symbl Javascript SDK allows you to add Conversational Intelligence directly into your web applications and meeting platforms. With the Symbl Javascript SDK, you can generate intelligent insights such as action items, topics and questions. Currently the Symbl Javascript SDK only works with the Telephony API and Streaming API.
 
 Symbl's APIs empower developers to enable: 
 

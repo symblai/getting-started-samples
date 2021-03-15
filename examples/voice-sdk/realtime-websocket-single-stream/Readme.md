@@ -36,6 +36,11 @@ Install the Symbl Javascript SDK and other required Node modules:
 
 ```npm install```
 
+`mic` also requires you to install `sox`. To install `sox` choose the option which fits your operating system:
+
+Mac: `brew install sox`
+Windows and Linux: [Installation of SoX on different Platforms](https://at.projects.genivi.org/wiki/display/PROJ/Installation+of+SoX+on+different+Platforms)
+
 ## Integration 
 
 Run the application using 

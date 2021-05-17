@@ -118,7 +118,7 @@ ws.on('connect', conn => {
                 type: 'stop_recognition',
             })
         );
-    }, 10 * 1000);
+    }, 60 * 1000);
 });
 
 auth({

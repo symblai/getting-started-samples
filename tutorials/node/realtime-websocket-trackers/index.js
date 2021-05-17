@@ -50,8 +50,6 @@ ws.on('connect', conn => {
                 micInstance.start();
             } else if (message.type === 'conversation_created') {
                 console.log(`Conversation Created - conversationId: ${message.data.conversationId}`);
-            } else if (message.type === '') {
-
             }
 
         } else if (data.type === 'tracker_response') {

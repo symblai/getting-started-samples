@@ -11,20 +11,31 @@ const micInstance = mic({
     debug: false,
     exitOnSilence: 6,
 });
+
 const micInputStream = micInstance.getAudioStream();
+let connectionStartEpoch;
+
 let connection = undefined;
 const ws = new WebSocketClient();
+
 ws.on('connectFailed', e => {
     console.error('Connection Failed.', e);
 });
+
 ws.on('connect', conn => {
+    const connectionEstablishedEpoch = Date.now();
+
     connection = conn;
+    let startRequestSentEpoch;
+
     connection.on('close', () => {
         console.log('WebSocket closed.');
     });
+
     connection.on('error', err => {
         console.log('WebSocket error.', err);
     });
+
     connection.on('message', _data => {
         const data = JSON.parse(_data.utf8Data)
         if (data.type === 'message') {
@@ -32,13 +43,24 @@ ws.on('connect', conn => {
             const message = data.message;
             if (message.type === 'recognition_result') {
                 console.log(message.punctuated.transcript, '\n');
+            } else if (message.type === 'started_listening') {
+                console.log(`Started to listen after ${(Date.now() - startRequestSentEpoch) / 1000} seconds of sending start_request`)
+                console.log(`Started listening...`); //Marks the point to start sending in audio data on the WebSocket.
+
+                micInstance.start();
+            } else if (message.type === 'conversation_created') {
+                console.log(`Conversation Created - conversationId: ${message.data.conversationId}`);
             }
 
         } else if (data.type === 'tracker_response') {
             console.log(JSON.stringify(data, null, 2))
         }
     });
-    console.log('Connection established.');
+
+    console.log(`WebSocket connection established in ${(connectionEstablishedEpoch - connectionStartEpoch) / 1000} seconds`);
+
+    startRequestSentEpoch = Date.now();
+
     connection.send(
         JSON.stringify({
             type: 'start_request',
@@ -82,9 +104,11 @@ ws.on('connect', conn => {
             },
         })
     );
+
     micInputStream.on('data', function (data) {
         connection.send(data);
     });
+
     setTimeout(() => {
         micInstance.stop();
         connection.sendUTF(
@@ -92,14 +116,17 @@ ws.on('connect', conn => {
                 type: 'stop_recognition',
             })
         );
-    }, 1 * 60 * 1000);
-    micInstance.start();
+    }, 60 * 1000);
 });
+
 auth({
     appId: '__yourAppId__',
     appSecret: '__yourAppSecret__'
 }).then(response => {
     const {accessToken} = response;
+    console.log(`Connecting to Symbl WebSocket API...`);
+    connectionStartEpoch = Date.now();
+
     ws.connect(
         'wss://api.symbl.ai/v1/realtime/insights/' + uuid(),
         null,

@@ -1,6 +1,12 @@
 # Getting Started - Samples
 
-Few code samples to get you started quickly with Symbl APIs.
+Symbl's APIs empower developers to enable: 
+- **Real-time** analysis of free-flowing discussions to automatically surface highly relevant summary discussion topics, contextual insights, suggestive action items, follow-ups, decisions, and questions.
+- **Voice APIs** that makes it easy to add AI-powered conversation intelligence to either [telephony][telephony] or [WebSocket][websocket] interfaces.
+- **Conversation APIs** that provide a REST interface for managing and processing your conversation data.
+- **Summary UI** with a fully customizable and editable reference experience that indexes a searchable transcript and shows generated actionable insights, topics, timecodes, and speaker information.
+
+<hr />
 
 ## List of Sample Codes
 
@@ -20,7 +26,7 @@ Few code samples to get you started quickly with Symbl APIs.
 - [Intent Detection with PSTN Dial-In using Voice SDK](./examples/voice-sdk/telephony-realtime-intent-detection/index.js)
   - Get the intents, real-time in a Telephone call.
     [Read More](./examples/voice-sdk/telephony-realtime-intent-detection/Readme.md)
-- [Passing different Audio Codecs](./examplex/voice-sdk/telephony-custom-audio-config/index.js)
+- [Passing different Audio Codecs](./examples/voice-sdk/telephony-custom-audio-config/index.js)
 
 ## Install
 
@@ -53,34 +59,46 @@ Every sample code has more instructions wherever applicable.
 Once you've configured the above, simply run any sample code you would like to
 try for example:
 
+### Transcribe Phone Call Live 
+
 ```bash
 node ./tutorials/node/live-transcript-phone-call/index.js
 ```
+
+### Stream a Real-time WebSocket 
 
 ```bash
 node ./examples/voice-sdk/realtime-websocket-single-stream/index.js
 ```
 
+### Customize an Audio Configuration
+
 ```bash
 node ./examples/voice-sdk/telephony-custom-audio-config/index.js
 ```
+
+### Customize Language and Timezone 
 
 ```bash
 node ./examples/voice-sdk/telephony-custom-language-and-timezone/index.js
 ```
 
+### Detect Real-time Telephony Insights
+
 ```bash
 node ./examples/voice-sdk/telephony-real-time-insights-transcription/index.js
 ```
 
+### Detect Intents in Real-Time
+
 ```bash
 node ./examples/voice-sdk/telephony-realtime-intent-detection/index.js
 ```
+### Handle Speaker Events
 
 ```bash
 node ./examples/voice-sdk/telephony-speaker-events/index.js
 ```
-
 
 ## Testing for PSTN
 
@@ -90,14 +108,19 @@ meeting. Begin speaking after you see new participant, the call will end and
 you'll receive an email with the generated insights if you have passed valid
 email Id in the code.
 
-## References
+## Community
 
-Feel free to fork any of the projects here to use on your own and if you have
-any code improvements, make a pull request and the request will be reviewed by
-one of our admins.
+If you have any questions, feel free to reach out to us at devrelations@symbl.ai or through our [Community Slack][slack] or our [forum][developer_community].
 
-For a sample reference implementation using Symbl, take a look at our
-[Platform](https://platform.symbl.ai).
+This guide is actively developed, and we love to hear from you! Please feel free to [create an issue][issues] or [open a pull request][pulls] with your questions, comments, suggestions and feedback.  If you liked our integration guide, please star our repo!
 
-If you have questions, bugs to report or feature suggestions, join our
-[Dev Community](https://community.symbl.ai).
+This library is released under the [Apache License][license]
+
+[license]: LICENSE.txt
+[telephony]: https://docs.symbl.ai/docs/telephony/overview/post-api
+[websocket]: https://docs.symbl.ai/docs/streamingapi/overview/introduction
+[developer_community]: https://community.symbl.ai/?_ga=2.134156042.526040298.1609788827-1505817196.1609788827
+[slack]: https://join.slack.com/t/symbldotai/shared_invite/zt-4sic2s11-D3x496pll8UHSJ89cm78CA
+[signup]: https://platform.symbl.ai/?_ga=2.63499307.526040298.1609788827-1505817196.1609788827
+[issues]: https://github.com/symblai/getting-started-samples/issues
+[pulls]: https://github.com/symblai/getting-started-samples/pulls

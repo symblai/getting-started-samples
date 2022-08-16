@@ -11,7 +11,7 @@ Open `.env` file and add your APP_ID, APP_SECRET, SUMMARY_EMAIL. You can get
 APP_ID and APP_SECRET from
 [https://platform.symbl.ai](https://platform.symbl.ai)
 
-Let's start by inintialising `symbl-node` sdk
+Let's start by initializing `symbl-node` sdk
 
 ```js
 await sdk.init({

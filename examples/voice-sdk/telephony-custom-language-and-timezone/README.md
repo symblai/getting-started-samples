@@ -28,7 +28,7 @@ Open `.env` file and add your APP_ID, APP_SECRET, SUMMARY_EMAIL. You can get
 APP_ID and APP_SECRET from
 [https://platform.symbl.ai](https://platform.symbl.ai)
 
-we will use `symbl-node` package.
+We will use `symbl-node` package.
 
 ```javascript
 require('dotenv').config()

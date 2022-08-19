@@ -10,23 +10,32 @@ Symbl's APIs empower developers to enable:
 
 ## List of Sample Codes
 
-- [PSTN Dial-in using Voice SDK](./examples/voice-sdk/telephony-speaker-events/index.js)
+### Real-time
+
+- [Real-time Topics using WebSockets](./examples/node/realtime/topics)
+  - Connect directly using Streaming API to push audio and get Topics discussed
+    in real-time.
+    [Read More](./examples/node/realtime/topics/Readme.md)
+- [Real-time Trackers using WebSockets](./examples/node/realtime/trackers)
+  - Connect directly using Streaming API to push audio and get Trackers discussed
+    in real-time.
+    [Read More](./examples/node/realtime/trackers/Readme.md)
+
+### Telephony
+
+- [Passing different Audio Codecs](./examples/node/telephony/custom-audio-config)
+- [Realtime Output with PSTN Dialin using Voice SDK](./examples/node/telephony/realtime-insights-transcription)
+  - Get the live transcription and insights events in a Telephone call.
+    [Read More](./examples/node/telephony/realtime-insights-transcription/Readme.md)
+- [Intent Detection with PSTN Dial-In using Voice SDK](./examples/node/telephony/realtime-intent-detection)
+  - Get the intents, real-time in a Telephone call.
+    [Read More](./examples/node/telephony/realtime-intent-detection/Readme.md)
+- [PSTN Dial-in using Voice SDK](./examples/node/telephony/speaker-events)
   - Establishes a connection using a phone number through PSTN, to send speaker
     events, generate insights, and display a summary URL with the output. You
     can see how to initialize the Voice SDK, connect to the endpoint, push
     speaker events and get the summary URL.
-    [Read More](./examples/voice-sdk/telephony-speaker-events/Readme.md)
-- [Realtime WebSocket using Voice SDK](./examples/voice-sdk/realtime-websocket-topics/index.js)
-  - Connect directly using WebSocket API and push audio and get results in
-    real-time. Including Live Transcript and Insights.
-    [Read More](./examples/voice-sdk/realtime-websocket-single-stream/Readme.md)
-- [Realtime Output with PSTN Dialin using Voice SDK](./examples/voice-sdk/telephony-real-time-insights-transcription/index.js)
-  - Get the live transcription and insights events in a Telephone call.
-    [Read More](./examples/voice-sdk/telephony-real-time-insights-transcription/Readme.md)
-- [Intent Detection with PSTN Dial-In using Voice SDK](./examples/voice-sdk/telephony-realtime-intent-detection/index.js)
-  - Get the intents, real-time in a Telephone call.
-    [Read More](./examples/voice-sdk/telephony-realtime-intent-detection/Readme.md)
-- [Passing different Audio Codecs](./examples/voice-sdk/telephony-custom-audio-config/index.js)
+    [Read More](./examples/node/telephony/speaker-events/Readme.md)
 
 ## Install
 
@@ -45,59 +54,31 @@ configurations. Make copy of `.env.default` file as `.env`.
 cp .env.default .env
 ```
 
-Update `APP_ID` and `APP_SECRET` with valid values. You can get them by logging
-into [Symbl Platform](https://platform.symbl.ai). Update any additional
-configuration such as `DEFAULT_PHONE_NUMBER` may be required for a particular
-sample to work properly.
+Update `APP_ID`, `APP_SECRET`, and `SUMMARY_EMAIL` with valid values. You can
+get them by logging into [Symbl Platform](https://platform.symbl.ai). Update
+any additional configuration such as `DEFAULT_PHONE_NUMBER` may be required for
+a particular sample to work properly.
 
 ## Run
 
-Make sure any required configuration is done within the code and/or `.env` file.
+Make sure your `.env` file is configured correctly.
 
-Every sample code has more instructions wherever applicable.
+Once you've configured the above, execute the `run-examples.sh` script.
 
-Once you've configured the above, simply run any sample code you would like to
-try for example:
-
-### Transcribe Phone Call Live 
-
-```bash
-node ./tutorials/node/live-transcript-phone-call/index.js
 ```
+Syntax: run-example.sh [API_TYPE] [PROJECT_NAME] <SDK_LANG>
+API_TYPE: realtime or telephony
 
-### Stream a Real-time WebSocket 
+If PROJECT_NAME is missing, a list of available projects will be displayed on
+screen based on the API_TYPE selected.
 
-```bash
-node ./examples/voice-sdk/realtime-websocket-single-stream/index.js
-```
+Currently, the only accepted value for SDK_LANG is node, but is a optional parameter.
 
-### Customize an Audio Configuration
+To list examples for realtime projects, run:
+run-example.sh realitime
 
-```bash
-node ./examples/voice-sdk/telephony-custom-audio-config/index.js
-```
-
-### Customize Language and Timezone 
-
-```bash
-node ./examples/voice-sdk/telephony-custom-language-and-timezone/index.js
-```
-
-### Detect Real-time Telephony Insights
-
-```bash
-node ./examples/voice-sdk/telephony-real-time-insights-transcription/index.js
-```
-
-### Detect Intents in Real-Time
-
-```bash
-node ./examples/voice-sdk/telephony-realtime-intent-detection/index.js
-```
-### Handle Speaker Events
-
-```bash
-node ./examples/voice-sdk/telephony-speaker-events/index.js
+To the realtime tracker example, run:
+run-example.sh realitime tracker
 ```
 
 ## Testing for PSTN

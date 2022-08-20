@@ -4,7 +4,7 @@ The `common` library contains functions, configuration, etc that is common to al
 
 ## common.js
 
-This describes the common or minimal configuration needed to invoke a real-time request `sdk.startRealtimeRequest` on the Symbl platform. We can retreive that using the `getConfigScaffolding()` function.
+This describes the common or minimal configuration needed to invoke a real-time request `sdk.startRealtimeRequest` on the Symbl platform. We can retreive that using the `GetConfigScaffolding()` function.
 
 ### Common Configuration Parameters
 

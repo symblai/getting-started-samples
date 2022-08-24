@@ -1,4 +1,4 @@
-# Get Live Transcription with a Simple Phone Call
+# Get a Live Transcription with a Simple Phone Call
 
 Get the live transcription in your Node.js application by making a simple call
 to a valid phone number.

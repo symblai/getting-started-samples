@@ -2,8 +2,7 @@
 
 ## Setup
 
-Make sure you have [your account credentials](https://platform.symbl.ai/#/home)
-and Node.js installed (> v8.x) on your machine.
+Make sure you have [your account credentials](https://platform.symbl.ai/#/home) and Node.js installed (> v8.x) on your machine.
 
 The sample code uses `sox` to access microphone. You will also need to make sure that `sox` is installed on your machine.
 

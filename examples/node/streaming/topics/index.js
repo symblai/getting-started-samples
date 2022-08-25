@@ -8,8 +8,11 @@ var streaming = require('../../common/streaming.js');
 config = common.getConfigScaffolding();
 
 /*
-  When Symbl detects a topic, this callback will be called.
+  1. Configure to receive topics
+  2. When Symbl detects a topic, this callback will be called.
 */
+config.insightTypes = ['topic'];
+
 config.handlers.onTopicResponse = (data) => {
   console.log('onTopicResponse', JSON.stringify(data, null, 2));
 };

@@ -8,8 +8,12 @@ var streaming = require('../../common/streaming.js');
 config = common.getConfigScaffolding();
 
 /*
-  Add input parameters for trackers
+  1. Configure to receive topics
+  2. Add input parameters for trackers
+  3. When Symbl detects a topic, this callback will be called.
 */
+// config.insightTypes = ['topic'];
+
 config.trackers = [
   {
       name: 'Denial',

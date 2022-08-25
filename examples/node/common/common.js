@@ -9,7 +9,6 @@ exports.getConfigScaffolding = function() {
 
   var scaffold = {
     id,
-    insightTypes: ['action_item', 'question'],
     config: {
       meetingTitle: 'My Test Meeting',
       confidenceThreshold: 0.7,

@@ -5,7 +5,7 @@ var streaming = require('../../common/streaming.js');
 /*
   Get basic configuration
 */
-config = common.getConfigScaffolding();
+config = common.GetConfigScaffolding();
 
 /*
   1. Configure to receive topics

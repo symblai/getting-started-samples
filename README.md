@@ -1,4 +1,4 @@
-# Getting Started - Samples
+# Getting Started - Examples/Samples
 
 Symbl's APIs empower developers to enable: 
 - **Real-time** analysis of free-flowing discussions to automatically surface highly relevant summary discussion topics, contextual insights, suggestive action items, follow-ups, decisions, and questions.
@@ -8,34 +8,61 @@ Symbl's APIs empower developers to enable:
 
 <hr />
 
-## List of Sample Codes
+## List of Examples as Code
+
+### Async (Offline, Pre-recorded, etc)
+
+The Async APIs allow individuals to obtain conversation intelligence on offline,
+pre-recorded conversations in an audio format (mp3, wav, etc).
+
+- [Action-Items](./examples/node/async/action-items)
+- [Analytics](./examples/node/async/analytics)
+- [Entities](./examples/node/async/entites)
+- [Follow-Ups](./examples/node/async/follow-ups)
+- [Messages](./examples/node/async/messages)
+- [Questions](./examples/node/async/questions)
+- [Summary](./examples/node/async/summary)
+- [Topics](./examples/node/async/topics)
+- [Trackers](./examples/node/async/trackers)
+
+### Management (Tracker management)
+
+The Management APIs allows individuals to create, list, delete Trackers that can be used
+to highlight important or significant words, topics, etc in a given conversation.
+
+- [Create a Tracker](./examples/node/management/create)
+- [List all Trackers](./examples/node/management/list)
+- [Delete a Tracker](./examples/node/management/delete)
 
 ### Real-time
 
-- [Real-time Topics using WebSockets](./examples/node/realtime/topics)
-  - Connect directly using Streaming API to push audio and get Topics discussed
-    in real-time.
-    [Read More](./examples/node/realtime/topics/Readme.md)
-- [Real-time Trackers using WebSockets](./examples/node/realtime/trackers)
-  - Connect directly using Streaming API to push audio and get Trackers discussed
-    in real-time.
-    [Read More](./examples/node/realtime/trackers/Readme.md)
+These example applications use WebSockets in order to using the Streaming APIs
+get real-time analysis on conversation for a variety of intelligence metrics. These
+examples make use of the Microphone in order to demonstrate the real-time
+analytics capabilities.
+
+- [Topics](./examples/node/realtime/topics)
+- [Trackers](./examples/node/realtime/trackers)
+- [Questions](./examples/node/realtime/questions)
+- [Action-Items](./examples/node/realtime/action-items)
 
 ### Telephony
+
+These example applications the Telephony APIs to get real-time analysis on conversation
+for a variety of intelligence metrics.
 
 - [Passing different Audio Codecs](./examples/node/telephony/custom-audio-config)
 - [Realtime Output with PSTN Dialin using Voice SDK](./examples/node/telephony/realtime-insights-transcription)
   - Get the live transcription and insights events in a Telephone call.
-    [Read More](./examples/node/telephony/realtime-insights-transcription/Readme.md)
 - [Intent Detection with PSTN Dial-In using Voice SDK](./examples/node/telephony/realtime-intent-detection)
   - Get the intents, real-time in a Telephone call.
-    [Read More](./examples/node/telephony/realtime-intent-detection/Readme.md)
 - [PSTN Dial-in using Voice SDK](./examples/node/telephony/speaker-events)
   - Establishes a connection using a phone number through PSTN, to send speaker
     events, generate insights, and display a summary URL with the output. You
     can see how to initialize the Voice SDK, connect to the endpoint, push
     speaker events and get the summary URL.
-    [Read More](./examples/node/telephony/speaker-events/Readme.md)
+
+> **_NOTE:_** Validation on the `Telephony` examples are still pending. If you notice an issue, drop us a line!
 
 ## Install
 
@@ -66,17 +93,20 @@ Make sure your `.env` file is configured correctly.
 Once you've configured the above, execute the `run-examples.sh` script.
 
 ```
-Syntax: run-example.sh [API_TYPE] [PROJECT_NAME] <SDK_LANG>
-API_TYPE: realtime or telephony
-
-If PROJECT_NAME is missing, a list of available projects will be displayed on
-screen based on the API_TYPE selected.
-
-Currently, the only accepted value for SDK_LANG is node, but is a optional parameter.
-
-To list examples for realtime projects, run:
+Syntax: <SDK_LANG=lang> run-example.sh [API_TYPE] <PROJECT_NAME> <PARAM=VALUE>
+ 
+Required Parameters:
+- API_TYPE (required): async, realtime or telephony
+ 
+Optional parameters:
+- PROJECT_NAME (optional): if missing, will provide a list of projects
+- SDK_LANG (optional): environment variable to select the language
+- <PARAM=VALUE> (optional): some action require user input
+ 
+Examples:
+To list examples for streaming projects, run:
 run-example.sh realitime
-
+ 
 To the realtime tracker example, run:
 run-example.sh realitime tracker
 ```

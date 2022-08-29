@@ -6,14 +6,14 @@ This is a simple main-style sample application using Symbl's Streaming API. This
 
 Open `.env` file and add your APP_ID, APP_SECRET, SUMMARY_EMAIL. You can get APP_ID and APP_SECRET from [https://platform.symbl.ai](https://platform.symbl.ai)
 
-Most of the heavy lifting is done in the `common` libraries which you can read about its plumbing [here](../../common/README.md).
+Most of the heavy lifting is done in the `common` library which you can read about its plumbing [here](../../common/README.md).
 
 ## Topics Configuration
 
 The Topic API is among the simpliest of the Symbl APIs as the configuration/input parameters just require the minimal/common configuration provided in the `common.js`.
 
 ```javascript
-config = common.getConfigScaffolding();
+config = common.GetConfigScaffolding();
 ```
 
 Then we need to hook up the message handler so we can receive Topic data/results:

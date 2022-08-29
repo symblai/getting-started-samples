@@ -6,7 +6,7 @@ This is a simple main-style sample application using Symbl's Streaming API. This
 
 Open `.env` file and add your APP_ID, APP_SECRET, SUMMARY_EMAIL. You can get APP_ID and APP_SECRET from [https://platform.symbl.ai](https://platform.symbl.ai)
 
-Most of the heavy lifting is done in the `common` libraries which you can read about its plumbing [here](../../common/README.md).
+Most of the heavy lifting is done in the `common` library which you can read about its plumbing [here](../../common/README.md).
 
 ## Tracker Configuration
 

@@ -101,7 +101,7 @@ case "${API_TYPE}" in
         if [[ "${EXAMPLE_NAME}" == "create" ]]; then
             if [[ -z "${TRACKER_NAME}" || -z "${TRACKER_VALUE}" ]]; then
                 echo "The tracker name and/or value must be set."
-                echo "Add TRACKER_NAME=\"myname\" or TRACKER_value=\"myvalue\" if they are missing."
+                echo "Add TRACKER_NAME=\"myname\" or TRACKER_VALUE=\"myvalue\" if they are missing."
                 exit 1
             fi
         elif [[ "${EXAMPLE_NAME}" == "delete" ]]; then

@@ -81,9 +81,10 @@ configurations. Make copy of `.env.default` file as `.env`.
 cp .env.default .env
 ```
 
-Update `APP_ID`, `APP_SECRET`, and `SUMMARY_EMAIL` with valid values. You can
-get them by logging into [Symbl Platform](https://platform.symbl.ai). Update
-any additional configuration such as `DEFAULT_PHONE_NUMBER` may be required for
+Update `APP_ID`, `APP_SECRET`, and `SUMMARY_EMAIL` with valid values. You are
+going to new a Symbl account. If you don't have one, you can [sign up here][symbl_signup]
+for a free account which will allow you to process 1,000 minutes of conversation each month.
+Update any additional configuration such as `DEFAULT_PHONE_NUMBER` may be required for
 a particular sample to work properly.
 
 ## Run
@@ -136,3 +137,4 @@ This library is released under the [MIT License][license]
 [issues]: https://github.com/symblai/getting-started-samples/issues
 [pulls]: https://github.com/symblai/getting-started-samples/pulls
 [license]: LICENSE
+[symbl_signup]: https://platform.symbl.ai/signup?utm_source=symbl&utm_medium=blog&utm_campaign=devrel&_ga=2.226597914.683175584.1662998385-1953371422.1659457591&_gl=1*mm3foy*_ga*MTk1MzM3MTQyMi4xNjU5NDU3NTkx*_ga_FN4MP7CES4*MTY2MzEwNDQyNi44Mi4xLjE2NjMxMDQ0MzcuMC4wLjA.

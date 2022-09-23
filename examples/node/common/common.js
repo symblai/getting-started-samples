@@ -1,6 +1,10 @@
+// Copyright 2022 Symbl.ai SDK contributors. All Rights Reserved.
+// SPDX-License-Identifier: MIT
+
 require('dotenv').config()
 const fetch = require('node-fetch');
 const uuid = require('uuid').v4
+// const util = require('util')
 
 const sampleRateHertz = 16000
 
@@ -21,7 +25,7 @@ exports.Login = async function() {
 
   var response = await exports.Query("https://api.symbl.ai/oauth2/token:generate", "POST", header,  bodyStr);
   var text = await response.text();
-  // console.log("response: " + response);
+  // console.log(util.inspect(response, false, null, true));
   // console.log("reason: " + text);
 
   return new Promise((resolve) => {
@@ -99,5 +103,10 @@ exports.Query = async function(uri, action, header, body) {
   };
 
   let response = await fetch(uri, options);
+
+  // var text = await response.text();
+  // console.log(util.inspect(response, false, null, true));
+  // console.log("reason: " + text);
+
   return response;
 }

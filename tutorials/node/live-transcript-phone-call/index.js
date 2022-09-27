@@ -1,3 +1,6 @@
+// Copyright 2022 Symbl.ai SDK contributors. All Rights Reserved.
+// SPDX-License-Identifier: MIT
+
 const {sdk, SpeakerEvent} = require("symbl-node");
 
 sdk.init({

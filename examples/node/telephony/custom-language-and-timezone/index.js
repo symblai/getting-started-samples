@@ -1,3 +1,6 @@
+// Copyright 2022 Symbl.ai SDK contributors. All Rights Reserved.
+// SPDX-License-Identifier: MIT
+
 /*
  *  This example shows how to use languages other than English and also how to pass in `timezone` in which the conversation is taking place.
  *  For languages: Currently the following languages are supported

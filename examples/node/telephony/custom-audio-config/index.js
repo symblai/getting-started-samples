@@ -1,3 +1,6 @@
+// Copyright 2022 Symbl.ai SDK contributors. All Rights Reserved.
+// SPDX-License-Identifier: MIT
+
 /*
  * This example shows how to pass in different Audio Codecs. The ones currently supported are
  *   OPUS:

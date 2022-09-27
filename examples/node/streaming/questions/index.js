@@ -1,3 +1,6 @@
+// Copyright 2022 Symbl.ai SDK contributors. All Rights Reserved.
+// SPDX-License-Identifier: MIT
+
 require('dotenv').config()
 var common = require('../../common/common.js');
 var streaming = require('../../common/streaming.js');

@@ -25,6 +25,10 @@ pre-recorded conversations in an audio format (mp3, wav, etc).
 - [Topics](./examples/node/async/topics)
 - [Trackers](./examples/node/async/trackers)
 
+### Summary UI (Offline, Pre-recorded,etc)
+
+- [Summary UI for Video](./examples/node/async-url/summary-ui-video)
+
 ### Management (Tracker management)
 
 The Management APIs allows individuals to create, list, delete Trackers that can be used

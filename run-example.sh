@@ -41,7 +41,7 @@ if [[ -z "${API_TYPE}" && -z "${EXAMPLE_NAME}" ]]; then
 fi
 
 FILENAME="${FILENAME:-""}"
-URI="${URI:-""}"
+URL="${URL:-""}"
 TRACKER_ID="${TRACKER_ID:-""}"
 TRACKER_NAME="${TRACKER_NAME:-""}"
 TRACKER_VALUE="${TRACKER_VALUE:-""}"
@@ -58,8 +58,8 @@ do
         "FILENAME" | "filename")
             FILENAME="${value}"
             ;;
-        "URI" | "uri")
-            URI="${value}"
+        "URL" | "url")
+            URL="${value}"
             ;;
         "TRACKER_ID" | "TRACKERId" | "tracker_id" | "trackeid")
             TRACKER_ID="${value}"
@@ -97,6 +97,13 @@ case "${API_TYPE}" in
             echo " "
         fi
         ;;
+    "async-url")
+        if [[ -z "${URL}" ]]; then
+            echo "If you want to provide your own audio file, specify URL=\"HTTP URL\"."
+            echo "Otherwise, the default at the root of the repo will be provided."
+            exit 1
+        fi
+        ;;
     "management")
         if [[ "${EXAMPLE_NAME}" == "create" ]]; then
             if [[ -z "${TRACKER_NAME}" || -z "${TRACKER_VALUE}" ]]; then
@@ -120,6 +127,9 @@ case "${API_TYPE}" in
         ;;
 esac
 
+if [[ -z "${URL}" ]]; then
+    URL="https://symbltestdata.s3.us-east-2.amazonaws.com/newPhonecall.mp3"
+fi
 if [[ -z "${FILENAME}" ]]; then
     FILENAME="newPhonecall.mp3"
 fi
@@ -139,7 +149,7 @@ fi
 
 # execute the example
 FILENAME="${FILENAME}" \
-URI="${URI}" \
+URL="${URL}" \
 TRACKER_ID="${TRACKER_ID}" \
 TRACKER_NAME="${TRACKER_NAME}" \
 TRACKER_VALUE="${TRACKER_VALUE}" \

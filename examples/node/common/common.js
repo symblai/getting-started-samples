@@ -110,3 +110,59 @@ exports.Query = async function(uri, action, header, body) {
 
   return response;
 }
+
+/*
+ Implements a sleep function
+*/
+exports.Sleep = function(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+/*
+  Implements a wait for job completion function 
+*/
+exports.Wait = async function(token, jobId) {
+   //console.log("jobId: " + jobId);
+ 
+   const header = {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer " + token,
+     "Connection": "keep-alive",
+   };
+
+   var response;
+   var text;
+   var count = 0;
+   while (true) {
+    var uri = `https://api.symbl.ai/v1/job/${jobId}`;
+    response = await this.Query(uri, "GET", header,  null);
+    text = await response.text();
+    // console.log("response: " + response);
+    // console.log("reason: " + text);
+
+    if (response.status == 200 || response.status == 201) {
+      result = JSON.parse(text);
+      if (result.status != "in_progress") {
+        break;
+      }
+    } else {
+      break;
+    }
+
+    ++count;
+    if (count > 30) {
+      break;
+    }
+    await this.Sleep(5000);
+  }
+ 
+   return new Promise((resolve) => {
+     if (response.status == 200 || response.status == 201) {
+       resolve(text);
+     } else {
+      throw new Error(`${response.status}: ${text}`);
+     }
+   });
+}

@@ -10,24 +10,33 @@ Symbl's APIs empower developers to enable:
 
 ## List of Examples as Code
 
-### Async (Offline, Pre-recorded, etc)
+### Upload a Conversation using the Async APIs
 
-The Async APIs allow individuals to obtain conversation intelligence on offline,
-pre-recorded conversations in an audio format (mp3, wav, etc).
+The Async APIs allow individuals to obtain conversation intelligence on offline, pre-recorded conversations in an audio format (mp3, wav, etc). These examples demonstrate how to upload an audio or video files for processing.
 
-- [Action-Items](./examples/node/async/action-items)
-- [Analytics](./examples/node/async/analytics)
-- [Entities](./examples/node/async/entites)
-- [Follow-Ups](./examples/node/async/follow-ups)
-- [Messages](./examples/node/async/messages)
-- [Questions](./examples/node/async/questions)
-- [Summary](./examples/node/async/summary)
-- [Topics](./examples/node/async/topics)
-- [Trackers](./examples/node/async/trackers)
+- [Action-Items](./examples/node/async-upload/action-items)
+- [Analytics](./examples/node/async-upload/analytics)
+- [Entities](./examples/node/async-upload/entites)
+- [Follow-Ups](./examples/node/async-upload/follow-ups)
+- [Messages](./examples/node/async-upload/messages)
+- [Questions](./examples/node/async-upload/questions)
+- [Summary](./examples/node/async-upload/summary)
+- [Topics](./examples/node/async-upload/topics)
+- [Trackers](./examples/node/async-upload/trackers)
 
-### Summary UI (Offline, Pre-recorded,etc)
+### Reference a URL using the Async APIs
 
-- [Summary UI for Video](./examples/node/async-url/summary-ui-video)
+- Action-Items: TODO
+- Analytics: TODO
+- Entities: TODO
+- Follow-Ups: TODO
+- Messages: TODO
+- Questions: TODO
+- Summary: TODO
+- Topics: TODO
+- Trackers: TODO
+- Summary UI for Audio: TODO
+- [Summary UI using a Video](./examples/node/async-url/summary-ui-video)
 
 ### Management (Tracker management)
 

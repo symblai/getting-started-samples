@@ -8,7 +8,7 @@ Open `.env` file and add your APP_ID, APP_SECRET, SUMMARY_EMAIL. You can get APP
 
 Most of the heavy lifting is done in the `common` library which you can read about its plumbing [here](../../common/README.md).
 
-## Questionss Configuration
+## Questions Configuration
 
 The Questions API is among the simpliest of the Symbl APIs as the configuration/input parameters just require the minimal/common configuration provided in the `common.js`.
 

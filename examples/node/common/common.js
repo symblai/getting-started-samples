@@ -43,6 +43,7 @@ exports.Login = async function() {
 exports.GetConfigScaffolding = function() {
   // Need unique Id
   const id = uuid()
+  // console.log("uuid: " + id)
 
   var scaffold = {
     id,

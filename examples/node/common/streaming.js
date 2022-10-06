@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 require('dotenv').config()
+const util = require('util')
 
 const {sdk} = require('@symblai/symbl-js')
 const mic = require('mic')
@@ -39,6 +40,9 @@ exports.startCapturing = async function(config) {
      */
     micInputStream.on('data', (data) => {
       // Push audio from Microphone to websocket connection
+      // console.log("---------------------------")
+      // console.log(util.inspect(data, false, null, true));
+      // console.log("---------------------------")
       connection.sendAudio(data)
     })
 

@@ -23,7 +23,7 @@ if [[ -z "${API_TYPE}" && -z "${EXAMPLE_NAME}" ]]; then
     echo "Syntax: <SDK_LANG=lang> run-example.sh [API_TYPE] <PROJECT_NAME> <PARAM=VALUE>"
     echo " "
     echo "Required Parameters:"
-    echo "- API_TYPE (required): async, realtime or telephony"
+    echo "- API_TYPE (required): async-upload, realtime or telephony"
     echo " "
     echo "Optional parameters:"
     echo "- PROJECT_NAME (optional): if missing, will provide a list of projects"
@@ -90,7 +90,7 @@ fi
 
 # checks
 case "${API_TYPE}" in
-    "async")
+    "async-upload")
         if [[ -z "${FILENAME}" ]]; then
             echo "If you want to provide your own audio file, specify FILENAME=\"PATH_TO_FILE\"."
             echo "Otherwise, the default at the root of the repo will be provided."

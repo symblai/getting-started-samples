@@ -110,7 +110,7 @@ Once you've configured the above, execute the `run-examples.sh` script.
 Syntax: <SDK_LANG=lang> run-example.sh [API_TYPE] <PROJECT_NAME> <PARAM=VALUE>
  
 Required Parameters:
-- API_TYPE (required): async, realtime or telephony
+- API_TYPE (required): async-upload, realtime or telephony
  
 Optional parameters:
 - PROJECT_NAME (optional): if missing, will provide a list of projects

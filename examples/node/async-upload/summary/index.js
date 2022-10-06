@@ -6,7 +6,7 @@ const util = require('util')
 
 const common = require('../../common/common.js');
 const post = require('../../common/post-file.js');
-const intelligence = require('../../common/intelligence.js');
+const async = require('../../common/async.js');
 
 async function main() {
   /*
@@ -22,7 +22,7 @@ async function main() {
   /*
     Process Summary for the audio file
   */
-  var summary = await intelligence.Summary(token, result.conversationId);
+  var summary = await async.Summary(token, result.conversationId);
   var output = JSON.parse(summary);
   console.log(util.inspect(output, false, null, true));
 }

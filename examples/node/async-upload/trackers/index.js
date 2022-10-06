@@ -3,7 +3,7 @@ const util = require('util')
 
 const common = require('../../common/common.js');
 const post = require('../../common/post-file.js');
-const intelligence = require('../../common/intelligence.js');
+const async = require('../../common/async.js');
 
 async function main() {
   /*
@@ -19,7 +19,7 @@ async function main() {
   /*
     Process Trackers for the audio file
   */
-  var trackers = await intelligence.Trackers(token, result.conversationId);
+  var trackers = await async.Trackers(token, result.conversationId);
   var output = JSON.parse(trackers);
   console.log(util.inspect(output, false, null, true));
 }

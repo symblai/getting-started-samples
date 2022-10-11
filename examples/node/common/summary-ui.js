@@ -5,6 +5,10 @@ require('dotenv').config()
 var common = require('./common.js');
 const fetch = require('node-fetch');
 
+exports.SummaryAudioUI = async function(token, url, conversationId) {
+  return this.SummaryVideoUI(token, url, conversationId)
+}
+
 exports.SummaryVideoUI = async function(token, url, conversationId) {
   // console.log("conversationId: " + conversationId);
 

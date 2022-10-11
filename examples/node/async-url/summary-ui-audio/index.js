@@ -15,14 +15,14 @@ async function main() {
   var token = await common.Login();
 
   /*
-    Post the video file to the Symbl platform
+    Post the audio file to the Symbl platform
   */
-  var result = await posturl.PostVideoURL(token, process.env.URL);
+  var result = await posturl.PostAudioURL(token, process.env.URL);
 
   /*
-    Process Summary for the video file
+    Process Summary for the audio file
   */
-  var summary = await summaryui.SummaryVideoUI(token, process.env.URL, result.conversationId);
+  var summary = await summaryui.SummaryAudioUI(token, process.env.URL, result.conversationId);
   var output = JSON.parse(summary);
   console.log(util.inspect(output, false, null, true));
 }

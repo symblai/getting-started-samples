@@ -6,8 +6,12 @@ var common = require('./common.js');
 const fetch = require('node-fetch');
 var fs = require('fs');
 
+exports.PostAudioURL = async function(token, url) {
+  return this.PostVideoURL(token, url)
+}
+
 exports.PostVideoURL = async function(token, url) {
-  console.log(`video: ${url}\n`);
+  console.log(`audio/video: ${url}\n`);
 
   var status = await sendURL(token, url);
   var results = JSON.parse(status);
@@ -38,7 +42,11 @@ async function sendURL(token, url) {
   }
   var dataStr = JSON.stringify(data);
 
-  var uri = `https://api.symbl.ai/v1/process/video/url`;
+  var uri = `https://api.symbl.ai/v1/process/audio/url`
+  if (url.includes("mp4")) {
+    uri = `https://api.symbl.ai/v1/process/video/url`;
+  }
+
   var response = await common.Query(uri, "POST", header,  dataStr);
   var text = await response.text();
   // console.log("response: " + response);

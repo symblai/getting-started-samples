@@ -99,9 +99,9 @@ case "${API_TYPE}" in
         ;;
     "async-url")
         if [[ -z "${URL}" ]]; then
-            echo "If you want to provide your own audio file, specify URL=\"HTTP URL\"."
+            echo "If you want to provide your own audio/video file, specify URL=\"HTTP URL\"."
             echo "Otherwise, the default at the root of the repo will be provided."
-            exit 1
+            echo " "
         fi
         ;;
     "management")

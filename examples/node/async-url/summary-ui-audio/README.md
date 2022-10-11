@@ -1,6 +1,6 @@
 #  Using the Summary-UI API
 
-This is a simple main-style sample application using Symbl's Summary UI API. This application will post an video file to the platform and obtain the Summary results via a pre-canned UI when they become available.
+This is a simple main-style sample application using Symbl's Summary UI API. This application will post an audio file to the platform and obtain the Summary results via a pre-canned UI when they become available.
 
 ## Getting started
 
@@ -13,7 +13,7 @@ Most of the heavy lifting is done in the `common` library which you can read abo
 Obtaining intelligence on Summary using the Async API is pretty straight forward, the steps are:
 
 1. Login
-2. Post the video file and wait for the Symbl platform to process it
+2. Post the audio file and wait for the Symbl platform to process it
 3. Retrieve the URL for Summary UI
 
 ```
@@ -24,14 +24,14 @@ async function main() {
   var token = await common.Login();
 
   /*
-    Post the video file to the Symbl platform
+    Post the audio file to the Symbl platform
   */
-  var result = await posturl.PostVideoURL(token, process.env.URL);
+  var result = await posturl.PostAudioURL(token, process.env.URL);
 
   /*
-    Process Summary for the video file
+    Process Summary for the audio file
   */
-  var summary = await summaryui.SummaryVideoUI(token, process.env.URL, result.conversationId);
+  var summary = await summaryui.SummaryAudioUI(token, process.env.URL, result.conversationId);
   var output = JSON.parse(summary);
   console.log(util.inspect(output, false, null, true));
 }

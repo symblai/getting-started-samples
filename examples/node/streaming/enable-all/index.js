@@ -2,9 +2,10 @@
 // SPDX-License-Identifier: MIT
 
 require('dotenv').config()
-var common = require('../../common/common.js');
-var streaming = require('../../common/streaming.js');
-
+const common = require('../../common/common.js');
+const streaming = require('../../common/streaming.js');
+const streamingOutputDevice = require('../../common/streaming-output-device');
+const _ = require('lodash');
 /*
   Get basic configuration
 */
@@ -95,4 +96,11 @@ config.handlers.onTrackerResponse = (data) => {
 /*
   Start real-time Topic gathering
 */
-streaming.startCapturing(config);
+(async () => {
+    // Capture audio from microphone
+    const connection = await streaming.startCapturing(config);
+    console.log('ConnectionId: ', connection.connectionId)
+// Capture audio from output device
+    await streamingOutputDevice.startCapturing({... _.cloneDeep(config), id: connection.connectionId});
+})();
+

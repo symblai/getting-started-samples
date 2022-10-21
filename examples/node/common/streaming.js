@@ -72,6 +72,7 @@ exports.startCapturing = async function(config) {
         console.error('Error while stopping the connection.', e)
       }
     }, 60 * 1000) // Stop connection after 1 minute i.e. 60 secs
+    return connection;
   } catch (e) {
     console.error('Error: ', e)
   }

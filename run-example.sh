@@ -23,11 +23,11 @@ if [[ -z "${API_TYPE}" && -z "${EXAMPLE_NAME}" ]]; then
     echo "Syntax: <SDK_LANG=lang> run-example.sh [API_TYPE] <PROJECT_NAME> <PARAM=VALUE>"
     echo " "
     echo "Required Parameters:"
-    echo "- API_TYPE (required): async-upload, async-url, realtime or telephony"
+    echo "- API_TYPE (required): async-upload, async-url, streaming or telephony"
     echo " "
     echo "Optional parameters:"
     echo "- PROJECT_NAME (optional): if missing, will provide a list of projects"
-    echo "- SDK_LANG (optional): environment variable to select the language"
+    echo "- SDK_LANG (optional): environment variable to select the language. (Default: node)"
     echo "- <PARAM=VALUE> (optional): some action require user input"
     echo " "
     echo "Examples:"
@@ -122,7 +122,12 @@ case "${API_TYPE}" in
     "streaming" | "telephony")
         ;;
     *)
-        echo "The only supported API types are management async, realtime or telephony."
+        echo "The only supported API examples are: async-upload, async-url, streaming, management or telephony."
+        echo "To list examples using the Asychronous API with File Uploads, run the following command:"
+        echo "./run-example.sh async-upload"
+        echo " "
+        echo "To run the Streaming API where all conversation insights are detected, run the following command:"
+        echo "./run-example.sh streaming enable-all"
         exit 1
         ;;
 esac

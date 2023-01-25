@@ -23,7 +23,7 @@ if [[ -z "${API_TYPE}" && -z "${EXAMPLE_NAME}" ]]; then
     echo "Syntax: <SDK_LANG=lang> run-example.sh [API_TYPE] <PROJECT_NAME> <PARAM=VALUE>"
     echo " "
     echo "Required Parameters:"
-    echo "- API_TYPE (required): async-upload, realtime or telephony"
+    echo "- API_TYPE (required): async-upload, async-url, realtime or telephony"
     echo " "
     echo "Optional parameters:"
     echo "- PROJECT_NAME (optional): if missing, will provide a list of projects"

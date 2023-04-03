@@ -5,43 +5,43 @@ require('dotenv').config()
 var common = require('./common.js');
 const fetch = require('node-fetch');
 
-exports.Topics = async function(token, conversationId) {
-  return processIntelligence(token, "topics", conversationId);
+exports.Topics = async function(token, conversationId, params) {
+  return processIntelligence(token, "topics", conversationId, params);
 }
 
-exports.Questions = async function(token, conversationId) {
-  return processIntelligence(token, "questions", conversationId);
+exports.Questions = async function(token, conversationId, params) {
+  return processIntelligence(token, "questions", conversationId, params);
 }
 
-exports.FollowUps = async function(token, conversationId) {
-  return processIntelligence(token, "follow-ups", conversationId);
+exports.FollowUps = async function(token, conversationId, params) {
+  return processIntelligence(token, "follow-ups", conversationId, params);
 }
 
-exports.Entities = async function(token, conversationId) {
-  return processIntelligence(token, "entities", conversationId);
+exports.Entities = async function(token, conversationId, params) {
+  return processIntelligence(token, "entities", conversationId, params);
 }
 
-exports.ActionItems = async function(token, conversationId) {
-  return processIntelligence(token, "action-items", conversationId);
+exports.ActionItems = async function(token, conversationId, params) {
+  return processIntelligence(token, "action-items", conversationId, params);
 }
 
-exports.Messages = async function(token, conversationId) {
-  return processIntelligence(token, "messages", conversationId);
+exports.Messages = async function(token, conversationId, params) {
+  return processIntelligence(token, "messages", conversationId, params);
 }
 
-exports.Summary = async function(token, conversationId) {
-  return processIntelligence(token, "summary", conversationId);
+exports.Summary = async function(token, conversationId, params) {
+  return processIntelligence(token, "summary", conversationId, params);
 }
 
-exports.Analytics = async function(token, conversationId) {
-  return processIntelligence(token, "analytics", conversationId);
+exports.Analytics = async function(token, conversationId, params) {
+  return processIntelligence(token, "analytics", conversationId, params);
 }
 
-exports.Trackers = async function(token, conversationId) {
-  return processIntelligence(token, "trackers-detected", conversationId);
+exports.Trackers = async function(token, conversationId, params) {
+  return processIntelligence(token, "trackers-detected", conversationId, params);
 }
 
-async function processIntelligence(token, api, conversationId) {
+async function processIntelligence(token, api, conversationId, params) {
   // console.log("conversationId: " + conversationId);
 
   const header = {
@@ -50,7 +50,14 @@ async function processIntelligence(token, api, conversationId) {
     "Connection": "keep-alive",
   };
 
-   var uri = `https://api.symbl.ai/v1/conversations/${conversationId}/${api}?parentRefs=true&sentiment=true`;
+  if (params == "all") {
+    params = "parentRefs=true&sentiment=true"
+  }
+
+   var uri = `https://api.symbl.ai/v1/conversations/${conversationId}/${api}?${params}`;
+   if (params == "none" || params == "") {
+      uri = `https://api.symbl.ai/v1/conversations/${conversationId}/${api}`
+   }
    var response = await common.Query(uri, "GET", header,  null);
    var text = await response.text();
    // console.log("response: " + response);

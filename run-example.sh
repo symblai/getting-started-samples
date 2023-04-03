@@ -136,7 +136,11 @@ if [[ -z "${URL}" ]]; then
     URL="https://symbltestdata.s3.us-east-2.amazonaws.com/newPhonecall.mp3"
 fi
 if [[ -z "${FILENAME}" ]]; then
-    FILENAME="newPhonecall.mp3"
+    if [[ "${EXAMPLE_NAME}" == "redaction" ]]; then
+        FILENAME="phoneNumber.mp3"
+    else
+        FILENAME="newPhonecall.mp3"
+    fi
 fi
 
 if [[ -z "${EXAMPLE_NAME}" ]]; then

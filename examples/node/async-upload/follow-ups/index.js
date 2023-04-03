@@ -22,7 +22,7 @@ async function main() {
   /*
     Process FollowUps for the audio file
   */
-  var followUps = await async.FollowUps(token, result.conversationId);
+  var followUps = await async.FollowUps(token, result.conversationId, "none");
   var output = JSON.parse(followUps);
   console.log(util.inspect(output, false, null, true));
 }

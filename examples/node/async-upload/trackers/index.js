@@ -19,7 +19,7 @@ async function main() {
   /*
     Process Trackers for the audio file
   */
-  var trackers = await async.Trackers(token, result.conversationId);
+  var trackers = await async.Trackers(token, result.conversationId, "none");
   var output = JSON.parse(trackers);
   console.log(util.inspect(output, false, null, true));
 }

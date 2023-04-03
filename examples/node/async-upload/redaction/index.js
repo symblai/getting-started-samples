@@ -20,10 +20,10 @@ async function main() {
   var result = await post.Post(token, process.env.FILENAME);
 
   /*
-    Process Summary for the audio file
+    Process Messages for the audio file
   */
-  var summary = await async.Summary(token, result.conversationId, "none");
-  var output = JSON.parse(summary);
+  var messages = await async.Messages(token, result.conversationId, "exclude=[\"PERSON_NAME\"]&redact=true");
+  var output = JSON.parse(messages);
   console.log(util.inspect(output, false, null, true));
 }
 

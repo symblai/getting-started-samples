@@ -22,7 +22,7 @@ async function main() {
   /*
     Process Analytics for the audio file
   */
-  var analytics = await async.Analytics(token, result.conversationId);
+  var analytics = await async.Analytics(token, result.conversationId, "none");
   var output = JSON.parse(analytics);
   console.log(util.inspect(output, false, null, true));
 }

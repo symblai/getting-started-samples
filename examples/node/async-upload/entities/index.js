@@ -22,7 +22,7 @@ async function main() {
   /*
     Process Entites for the audio file
   */
-  var entities = await async.Entities(token, result.conversationId);
+  var entities = await async.Entities(token, result.conversationId, "none");
   var output = JSON.parse(entities);
   console.log(util.inspect(output, false, null, true));
 }

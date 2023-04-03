@@ -22,7 +22,7 @@ async function main() {
   /*
     Process ActionItems for the audio file
   */
-  var actionItems = await async.ActionItems(token, result.conversationId);
+  var actionItems = await async.ActionItems(token, result.conversationId, "none");
   var output = JSON.parse(actionItems);
   console.log(util.inspect(output, false, null, true));
 }

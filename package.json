@@ -19,7 +19,7 @@
   "dependencies": {
     "@symblai/symbl-js": "^1.4.8",
     "dotenv": "^8.2.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.23",
     "mic": "^2.1.2",
     "node-audiorecorder": "^3.0.0",
     "node-fetch": "^2.6.7",
